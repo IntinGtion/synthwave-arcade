@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "NEON DRIVE ARCADE",
+    "description": "Eine Synthwave-Hommage an die Spielhallen der 80er.",
+    "lang": "de"
+  },
+  "theme": {
+    "bg": "#0b0221",
+    "bgAlt": "#150538",
+    "text": "#e8e0ff",
+    "muted": "#9a8cc9",
+    "primary": "#ff2a9d",
+    "secondary": "#00e5ff",
+    "accent": "#ffd23f",
+    "fontHeading": "'Orbitron', sans-serif",
+    "fontBody": "'Share Tech Mono', monospace"
+  },
+  "sections": {
+    "hero": {
+      "enabled": true,
+      "kicker": "PRESS START",
+      "title": "NEON DRIVE ARCADE",
+      "subtitle": "Fahr in den Sonnenuntergang. Der Highscore wartet.",
+      "cta": { "label": "INSERT COIN", "target": "#contact" }
+    },
+    "scores": {
+      "enabled": true,
+      "title": "HIGH SCORES",
+      "items": [
+        { "rank": 1, "name": "AAA", "points": 999999, "note": "Grid Runner" },
+        { "rank": 2, "name": "NEO", "points": 874320, "note": "Chrome Cruiser" },
+        { "rank": 3, "name": "ZED", "points": 651180, "note": "Laser Lap" },
+        { "rank": 4, "name": "VHS", "points": 420690, "note": "Night Drive" },
+        { "rank": 5, "name": "SYN", "points": 133700, "note": "Sunset Strip" }
+      ]
+    },
+    "games": {
+      "enabled": true,
+      "title": "GAMES",
+      "items": [
+        { "name": "Grid Runner", "text": "Renne durch endlose Neon-Korridore.", "tag": "1P" },
+        { "name": "Chrome Cruiser", "text": "Drift durch die Skyline bei Nacht.", "tag": "1-2P" },
+        { "name": "Laser Lap", "text": "Schnellste Runde gewinnt. Mehr nicht.", "tag": "VS" }
+      ]
+    },
+    "contact": {
+      "enabled": true,
+      "id": "contact",
+      "title": "INSERT COIN",
+      "text": "Du willst mitspielen? Melde dich.",
+      "links": [
+        { "label": "GitHub", "url": "https://github.com/IntinGtion" }
+      ]
+    },
+    "footer": {
+      "enabled": true,
+      "text": "© 1984 – NEON DRIVE ARCADE · Ein Portfolio-Projekt"
+    }
+  }
+}
