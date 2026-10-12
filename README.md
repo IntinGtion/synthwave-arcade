@@ -6,7 +6,7 @@ Synthwave-Themenseite, rein statisch (HTML, CSS, JavaScript). Teil einer Reihe k
 
 ## Gestaltungsidee
 - Farbwelt: Neon-Pink, Cyan und Gelb auf tiefem Violett
-- Schrift: Orbitron (Überschriften), Share Tech Mono (Text)
+- Schrift: Orbitron (Überschriften), Share Tech Mono (Text), lokal eingebunden unter `assets/fonts/` (SIL Open Font License), daher keine Verbindung zu Google-Servern
 - Signature-Animation: perspektivisches Grid, das in den Horizont scrollt, davor eine Sonne mit Scanlines
 
 ## Inhalt
