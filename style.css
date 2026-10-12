@@ -171,3 +171,176 @@ footer { text-align: center; padding: 2rem 1rem; color: var(--muted); font-size:
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ======================================================
+   Erweiterung: Navigation, Sektionen, Spiel, Effekte
+   ====================================================== */
+
+section[id] { scroll-margin-top: 4.5rem; }
+
+/* ---------- Navigation ---------- */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: .8rem 1.5rem;
+  transition: background .3s, box-shadow .3s;
+}
+.nav.scrolled {
+  background: rgba(11, 2, 33, .85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(255, 42, 157, .35);
+}
+.nav .brand {
+  font-family: var(--fontHeading);
+  font-weight: 900;
+  letter-spacing: .12em;
+  color: var(--primary);
+  text-decoration: none;
+  text-shadow: 0 0 10px var(--primary);
+  white-space: nowrap;
+}
+.nav ul { list-style: none; display: flex; gap: 1.2rem; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+.nav ul::-webkit-scrollbar { display: none; }
+.nav li a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: .85rem;
+  letter-spacing: .12em;
+  padding: .3rem 0;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color .2s, border-color .2s, text-shadow .2s;
+}
+.nav li a:hover, .nav li a:focus-visible, .nav li a.active {
+  color: var(--secondary);
+  border-color: var(--secondary);
+  text-shadow: 0 0 8px var(--secondary);
+  outline: none;
+}
+.sound-toggle {
+  font-family: var(--fontHeading);
+  font-size: .7rem;
+  letter-spacing: .1em;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--accent);
+  padding: .35rem .7rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.sound-toggle[aria-pressed="true"] { background: var(--accent); color: var(--bg); box-shadow: 0 0 12px var(--accent); }
+.sound-toggle:focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; }
+
+/* ---------- Einblenden beim Scrollen ---------- */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ---------- About ---------- */
+.about-body { display: grid; grid-template-columns: 1fr auto; gap: 2.5rem; align-items: center; }
+.about-body p + p { margin-top: 1rem; }
+.badge {
+  display: grid;
+  place-items: center;
+  width: 9rem;
+  aspect-ratio: 1;
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  color: var(--accent);
+  font-family: var(--fontHeading);
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-align: center;
+  transform: rotate(-12deg);
+  box-shadow: 0 0 22px var(--accent), inset 0 0 22px rgba(255, 210, 63, .25);
+  text-shadow: 0 0 8px var(--accent);
+}
+
+/* ---------- Statistik ---------- */
+.stats { padding-top: 1rem; padding-bottom: 1rem; }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; text-align: center; }
+.stat { padding: 1.4rem .5rem; border-top: 2px solid var(--primary); background: linear-gradient(to bottom, rgba(255, 42, 157, .12), transparent); }
+.stat-value { display: block; font-family: var(--fontHeading); font-weight: 900; font-size: clamp(1.6rem, 5vw, 2.4rem); color: var(--secondary); text-shadow: 0 0 12px var(--secondary); font-variant-numeric: tabular-nums; }
+.stat-label { color: var(--muted); font-size: .85rem; letter-spacing: .15em; text-transform: uppercase; }
+
+/* ---------- Spiel ---------- */
+.game { text-align: center; }
+.game h2 { margin-bottom: 1rem; }
+.game-text { color: var(--muted); max-width: 36rem; margin: 0 auto 1.5rem; }
+.game-frame {
+  width: min(100%, 420px);
+  margin: 0 auto;
+  border: 2px solid var(--secondary);
+  box-shadow: 0 0 24px var(--secondary), inset 0 0 24px rgba(0, 229, 255, .2);
+  line-height: 0;
+}
+.game canvas { width: 100%; height: auto; touch-action: manipulation; cursor: pointer; }
+.game canvas:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- Spielhallen & FAQ ---------- */
+.locations .card h3 { color: var(--secondary); }
+.note-small { margin-top: 1.2rem; color: var(--muted); font-size: .8rem; }
+.faq details { border-bottom: 1px dashed rgba(255, 42, 157, .4); padding: 1rem 0; }
+.faq summary { cursor: pointer; font-family: var(--fontHeading); letter-spacing: .06em; color: var(--text); list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--primary); font-size: 1.3rem; line-height: 1; transition: transform .2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:hover, .faq summary:focus-visible { color: var(--secondary); outline: none; }
+.faq details p { margin-top: .8rem; color: var(--muted); }
+
+/* ---------- Hero-Atmosphäre ---------- */
+.stars { position: absolute !important; inset: 0; z-index: 0 !important; pointer-events: none; }
+.stars span {
+  position: absolute;
+  width: var(--s, 1px);
+  height: var(--s, 1px);
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #fff;
+  animation: twinkle var(--d, 3s) ease-in-out infinite;
+}
+.skyline { position: absolute; z-index: 1; left: 0; bottom: 32%; width: 100%; height: clamp(60px, 14vh, 130px); pointer-events: none; }
+.skyline .building { fill: #07011a; stroke: var(--secondary); stroke-width: 1; stroke-opacity: .35; vector-effect: non-scaling-stroke; }
+.skyline .win-a { fill: var(--accent); }
+.skyline .win-b { fill: var(--secondary); }
+.skyline .win { opacity: .8; }
+
+/* ---------- Globale Effekte ---------- */
+body.fx-crt::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, .18) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .55) 100%);
+}
+.cursor-glow {
+  position: fixed;
+  top: -150px; left: -150px;
+  width: 300px; height: 300px;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 229, 255, .16), transparent 65%);
+  transition: opacity .3s;
+  will-change: transform;
+}
+
+@keyframes twinkle { 0%, 100% { opacity: .2; } 50% { opacity: 1; } }
+
+@media (max-width: 720px) {
+  .nav { padding: .6rem 1rem; gap: .8rem; }
+  .nav .brand { display: none; }
+  .about-body { grid-template-columns: 1fr; justify-items: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}

@@ -15,16 +15,54 @@
     "fontHeading": "'Orbitron', sans-serif",
     "fontBody": "'Share Tech Mono', monospace"
   },
+  "effects": {
+    "scanlines": true,
+    "stars": true,
+    "skyline": true,
+    "cursorGlow": true,
+    "sound": true
+  },
   "sections": {
+    "nav": {
+      "enabled": true,
+      "brand": "NEON DRIVE"
+    },
     "hero": {
       "enabled": true,
       "kicker": "PRESS START",
       "title": "NEON DRIVE ARCADE",
       "subtitle": "Fahr in den Sonnenuntergang. Der Highscore wartet.",
-      "cta": { "label": "INSERT COIN", "target": "#contact" }
+      "cta": { "label": "INSERT COIN", "target": "#game" }
+    },
+    "about": {
+      "enabled": true,
+      "nav": "STORY",
+      "title": "INSERT NOSTALGIA",
+      "paragraphs": [
+        "1984. Draußen regnet es, drinnen blinken die Automaten. Ein Pfund Kleingeld, ein Cola-Becher und der Ehrgeiz, den eigenen Namen ganz oben in die Liste zu bekommen.",
+        "Neon Drive Arcade holt dieses Gefühl zurück: eine Spielhalle ohne Eintritt, ohne Anmeldung und ohne Münzen. Nur du, die Straße und der Horizont."
+      ],
+      "badge": "EST. 1984"
+    },
+    "stats": {
+      "enabled": true,
+      "items": [
+        { "value": 12, "label": "Automaten" },
+        { "value": 1984, "label": "Gegründet" },
+        { "value": 999999, "label": "Rekord-Score" },
+        { "value": 24, "suffix": "/7", "label": "Geöffnet" }
+      ]
+    },
+    "game": {
+      "enabled": true,
+      "nav": "PLAY",
+      "title": "NEON DRIVE",
+      "text": "Weiche dem Verkehr aus. Pfeiltasten oder A/D zum Lenken, am Handy links/rechts tippen. Leertaste startet.",
+      "storageKey": "neon-drive-best"
     },
     "scores": {
       "enabled": true,
+      "nav": "SCORES",
       "title": "HIGH SCORES",
       "items": [
         { "rank": 1, "name": "AAA", "points": 999999, "note": "Grid Runner" },
@@ -36,6 +74,7 @@
     },
     "games": {
       "enabled": true,
+      "nav": "GAMES",
       "title": "GAMES",
       "items": [
         { "name": "Grid Runner", "text": "Renne durch endlose Neon-Korridore.", "tag": "1P" },
@@ -43,9 +82,32 @@
         { "name": "Laser Lap", "text": "Schnellste Runde gewinnt. Mehr nicht.", "tag": "VS" }
       ]
     },
+    "locations": {
+      "enabled": true,
+      "nav": "HALLEN",
+      "title": "SPIELHALLEN",
+      "items": [
+        { "city": "Neo Tokyo", "address": "Akihabara Sektor 7", "hours": "18:00 – 04:00" },
+        { "city": "Miami Beach", "address": "Ocean Drive 1984", "hours": "20:00 – 06:00" },
+        { "city": "Los Angeles", "address": "Sunset Boulevard 80", "hours": "Rund um die Uhr" }
+      ],
+      "note": "Alle Standorte sind frei erfunden."
+    },
+    "faq": {
+      "enabled": true,
+      "nav": "FAQ",
+      "title": "FAQ",
+      "items": [
+        { "q": "Kostet das etwas?", "a": "Nein. Keine Münzen, kein Abo, kein Account." },
+        { "q": "Wo wird mein Highscore gespeichert?", "a": "Nur lokal in deinem Browser (localStorage). Es gibt keinen Server und es werden keine Daten übertragen." },
+        { "q": "Gibt es Sound?", "a": "Ja, aber nur auf Wunsch. Der Schalter oben rechts startet den Synthwave-Beat." },
+        { "q": "Läuft das auch am Handy?", "a": "Ja. Tippe links oder rechts auf das Spielfeld, um die Spur zu wechseln." }
+      ]
+    },
     "contact": {
       "enabled": true,
       "id": "contact",
+      "nav": "KONTAKT",
       "title": "INSERT COIN",
       "text": "Du willst mitspielen? Melde dich.",
       "links": [

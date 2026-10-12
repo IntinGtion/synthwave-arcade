@@ -23,6 +23,13 @@ function applyTheme(theme = {}) {
 }
 
 const renderers = {
+  nav(c) {
+    return el('nav', { class: 'nav', 'aria-label': 'Hauptnavigation' },
+      el('a', { class: 'brand', href: '#' }, c.brand),
+      el('ul', {})
+    );
+  },
+
   hero(c) {
     return el('section', { class: 'hero' },
       el('div', { class: 'sun', 'aria-hidden': 'true' }),
@@ -57,6 +64,60 @@ const renderers = {
     return el('section', { class: 'games' }, el('h2', {}, c.title), el('div', { class: 'cards' }, cards));
   },
 
+  about(c) {
+    return el('section', { class: 'about' },
+      el('h2', {}, c.title),
+      el('div', { class: 'about-body' },
+        el('div', {}, (c.paragraphs || []).map(p => el('p', {}, p))),
+        c.badge && el('div', { class: 'badge', 'aria-hidden': 'true' }, c.badge)
+      )
+    );
+  },
+
+  stats(c) {
+    const items = c.items.map(i =>
+      el('div', { class: 'stat' },
+        el('span', { class: 'stat-value', 'data-value': i.value, 'data-suffix': i.suffix || '' }, '0'),
+        el('span', { class: 'stat-label' }, i.label)
+      )
+    );
+    return el('section', { class: 'stats' }, el('div', { class: 'stat-row' }, items));
+  },
+
+  game(c) {
+    const canvas = el('canvas', { width: 480, height: 640, tabindex: 0, 'aria-label': 'Neon Drive Minispiel' });
+    const section = el('section', { class: 'game' },
+      el('h2', {}, c.title),
+      el('p', { class: 'game-text' }, c.text),
+      el('div', { class: 'game-frame' }, canvas)
+    );
+    // Initialisierung, sobald das Element im DOM hängt
+    queueMicrotask(() => initGame(canvas, { storageKey: c.storageKey }));
+    return section;
+  },
+
+  locations(c) {
+    const cards = c.items.map(i =>
+      el('article', { class: 'card' },
+        el('h3', {}, i.city),
+        el('p', {}, i.address),
+        el('span', { class: 'tag' }, i.hours)
+      )
+    );
+    return el('section', { class: 'locations' },
+      el('h2', {}, c.title),
+      el('div', { class: 'cards' }, cards),
+      c.note && el('p', { class: 'note-small' }, c.note)
+    );
+  },
+
+  faq(c) {
+    const items = c.items.map(i =>
+      el('details', {}, el('summary', {}, i.q), el('p', {}, i.a))
+    );
+    return el('section', { class: 'faq' }, el('h2', {}, c.title), el('div', {}, items));
+  },
+
   contact(c) {
     const links = (c.links || []).map(l =>
       el('a', { class: 'btn', href: l.url, target: '_blank', rel: 'noopener noreferrer' }, l.label)
@@ -82,9 +143,24 @@ function render(config) {
   applyTheme(config.theme);
 
   // Reihenfolge und Sichtbarkeit kommen aus der Config
+  const navItems = [];
   for (const [name, section] of Object.entries(config.sections)) {
-    if (section.enabled && renderers[name]) app.append(renderers[name](section));
+    if (!section.enabled || !renderers[name]) continue;
+    const node = renderers[name](section, config);
+    if (name !== 'nav' && name !== 'footer' && name !== 'hero') {
+      node.classList.add('reveal');
+    }
+    if (name !== 'nav' && name !== 'footer') {
+      node.id = section.id || name;
+      if (section.nav) navItems.push({ id: node.id, label: section.nav });
+    }
+    app.append(node);
   }
+
+  const nav = app.querySelector('.nav');
+  if (nav) buildNav(nav, navItems, config.effects);
+  initReveal();
+  initEffects(config.effects || {}, app.querySelector('.hero'));
 }
 
 fetch('config.json')

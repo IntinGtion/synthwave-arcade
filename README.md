@@ -9,9 +9,13 @@ Synthwave-Themenseite, rein statisch (HTML, CSS, JavaScript). Teil einer Reihe k
 - Schrift: Orbitron (Überschriften), Share Tech Mono (Text)
 - Signature-Animation: perspektivisches Grid, das in den Horizont scrollt, davor eine Sonne mit Scanlines
 
+## Inhalt
+Navigation, Story, Statistik, spielbares Minispiel (Canvas, Bestwert im localStorage), Highscores, Games, Spielhallen, FAQ, Kontakt. Sound ist standardmäßig aus.
+
 ## Konfiguration
 Alles Inhaltliche und Farbliche steht in `config.json`:
 - `meta`: Titel, Beschreibung, Sprache
+- `effects`: Scanlines, Sterne, Skyline, Cursor-Glow und Sound einzeln ein-/ausschalten
 - `theme`: Farben und Schriften (werden als CSS-Variablen gesetzt)
 - `sections`: pro Sektion `enabled` plus Inhalte; die Reihenfolge in der Datei bestimmt die Reihenfolge auf der Seite
 
@@ -22,4 +26,4 @@ Alles Inhaltliche und Farbliche steht in `config.json`:
 python -m http.server 8000
 ```
 
-Dann http://localhost:8000 öffnen.
+oder `npx http-server -p 8000 -c-1`. Dann http://localhost:8000 öffnen.
